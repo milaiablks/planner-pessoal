@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UFPR MED | Reta Final</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark">✳</div>
+      <div class="brand">
+        <p class="eyebrow">PROJETO APROVAÇÃO</p>
+        <h1>UFPR <span>MED</span></h1>
+        <p class="muted">reta final · 2026</p>
+      </div>
+      <nav class="navigation">
+        <button class="nav-item active" data-view="dashboard">⌂ Visão geral</button>
+        <button class="nav-item" data-view="calendar">▦ Calendário</button>
+        <button class="nav-item" data-view="errors">✎ Caderno de erros</button>
+      </nav>
+      <div class="sidebar-note">
+        <span>✦</span>
+        <p>Consistência antes da perfeição.</p>
+        <small>Um bloco de cada vez.</small>
+      </div>
+      <p class="sidebar-footer">FEITO PARA A SUA APROVAÇÃO</p>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="today-label">SEU PLANO DE ESTUDOS</p>
+          <h2 id="page-heading">Sua reta final</h2>
+        </div>
+        <div class="top-actions">
+          <span class="status-pill">● FOCO UFPR</span>
+          <button class="icon-button" id="reset-button" title="Apagar progresso">↻</button>
+        </div>
+      </header>
+
+      <section id="dashboard-view" class="view">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <p class="eyebrow">MEDICINA · UFPR 2027</p>
+            <h3>Seu futuro é construído<br>em cada questão.</h3>
+            <p>Revise com intenção. Corrija sem culpa. Volte mais forte.</p>
+            <button class="primary-button" id="today-button">Ver tarefas de hoje ↗</button>
+          </div>
+          <div class="hero-orbit">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit-core">MED<br><span>27</span></div>
+            <span class="orbit-star star-one">✦</span>
+            <span class="orbit-star star-two">✧</span>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon">▦</span><span class="stat-label">DIAS PLANEJADOS</span></div>
+            <p class="stat-number" id="planned-count">21</p>
+            <p class="stat-caption">do plano até a prova</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon">✓</span><span class="stat-label">TAREFAS FEITAS</span></div>
+            <p class="stat-number" id="completed-count">0</p>
+            <p class="stat-caption">pequenas vitórias acumuladas</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span class="stat-icon">↗</span><span class="stat-label">PROGRESSO GERAL</span></div>
+            <p class="stat-number"><span id="progress-number">0</span><small>%</small></p>
+            <div class="progress-track"><div id="progress-bar" class="progress-fill"></div></div>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">SEU PRÓXIMO PASSO</p><h3 id="focus-date-title">Plano do dia</h3></div>
+              <button class="text-button" id="open-calendar">Ver calendário ↗</button>
+            </div>
+            <div id="today-tasks" class="task-list"></div>
+          </section>
+          <section class="panel quote-panel">
+            <span class="quote-mark">“</span>
+            <p class="eyebrow">LEMBRETE DA RETA FINAL</p>
+            <blockquote>Você não precisa saber tudo. Precisa reconhecer o que sabe e recuperar os pontos que ainda estão ao alcance.</blockquote>
+            <div class="quote-line"></div>
+            <p class="muted">ESTRATÉGIA > DESESPERO</p>
+          </section>
+        </div>
+
+        <section class="panel subject-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">VISÃO DE CONJUNTO</p><h3>Matérias no radar</h3></div>
+            <span class="muted small">Distribuição sugerida do esforço</span>
+          </div>
+          <div id="subject-bars" class="subject-bars"></div>
+        </section>
+      </section>
+
+      <section id="calendar-view" class="view hidden">
+        <div class="section-intro">
+          <p class="eyebrow">12 OUT — 01 NOV</p>
+          <h3>Calendário de revisão</h3>
+          <p>Selecione um dia para abrir as tarefas e marcar o que concluiu.</p>
+        </div>
+        <div class="calendar-layout">
+          <section class="panel calendar-panel">
+            <div class="calendar-controls">
+              <button id="prev-month" class="icon-button">‹</button>
+              <h3 id="calendar-month">Outubro 2026</h3>
+              <button id="next-month" class="icon-button">›</button>
+            </div>
+            <div class="calendar-grid weekday-row">
+              <span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span><span>DOM</span>
+            </div>
+            <div id="calendar-days" class="calendar-grid"></div>
+            <div class="calendar-legend">
+              <span>● Planejado</span><span>● Concluído</span><span>● Selecionado</span>
+            </div>
+          </section>
+          <section class="panel selected-day-panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">PLANO SELECIONADO</p><h3 id="selected-date-title">Escolha um dia</h3></div>
+              <span class="day-badge" id="selected-day-badge">DIA</span>
+            </div>
+            <div id="selected-day-content"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="errors-view" class="view hidden">
+        <div class="section-intro">
+          <p class="eyebrow">APRENDER COM CADA QUESTÃO</p>
+          <h3>Caderno de erros</h3>
+          <p>Registre o que aconteceu e transforme cada erro em uma revisão objetiva.</p>
+        </div>
+        <section class="panel error-form-panel">
+          <h3>Adicionar um erro</h3>
+          <form id="error-form">
+            <div class="form-grid">
+              <label>Disciplina
+                <select id="error-subject" required>
+                  <option value="">Selecione</option>
+                  <option>Biologia</option><option>Química</option><option>Física</option>
+                  <option>Matemática</option><option>História</option><option>Geografia</option>
+                  <option>Português</option><option>Literatura</option><option>Filosofia</option>
+                  <option>Sociologia</option><option>Inglês</option><option>Discursiva</option>
+                </select>
+              </label>
+              <label>Assunto
+                <input id="error-topic" type="text" placeholder="Ex.: genética mendeliana" required>
+              </label>
+              <label>Tipo de erro
+                <select id="error-type" required>
+                  <option value="">Selecione</option>
+                  <option>Falta de conteúdo</option><option>Interpretação</option>
+                  <option>Cálculo ou fórmula</option><option>Gestão do tempo</option>
+                  <option>Chute / insegurança</option>
+                </select>
+              </label>
+              <label>O que vou revisar?
+                <input id="error-review" type="text" placeholder="Ex.: refazer 3 questões" required>
+              </label>
+            </div>
+            <button class="primary-button" type="submit">Salvar erro ＋</button>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">REVISÃO ATIVA</p><h3>Seus registros</h3></div>
+            <span class="muted small" id="error-count">0 registros</span>
+          </div>
+          <div id="error-list" class="error-list"></div>
+        </section>
+      </section>
+
+      <footer class="main-footer">
+        <span>UFPR MED · RETA FINAL</span>
+        <span>Seu progresso fica salvo neste navegador.</span>
+      </footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
